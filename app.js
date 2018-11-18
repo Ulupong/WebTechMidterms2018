@@ -1,23 +1,17 @@
-var evee = angular.module('evee', ['ngRoute']);
+var app = angular.module('evee', ['ngRoute']);
 
-evee.config(($routeProvider) => {
-  $routeProvider
-  
-  .when('/', {
-    templateUrl : 'pages/carouselView.html',
-    controller : 'homeController'
-  })
-  
-  .when('/browse', {
-    templateUrl : 'pages/browse.html',
-    controller : 'browseController'
-  })
-})
+app.config(['$routeProvider', 
+    function($routeProvider){
+        $routeProvider
+            .when('/', {
+                templateUrl: 'pages/carouselView.html'
+            })
+            .when('/browse', {
+                templateUrl: 'pages/browse.html'
+            })
 
-evee.controller('homeController', ($scope) => {
-  $scope.info = ''
-})
-
-evee.controller('browseController', ($scope) => {
-  $scope.info = ''
-})
+            .otherwise({
+                redirectTo: '/'
+            })
+    }
+])
